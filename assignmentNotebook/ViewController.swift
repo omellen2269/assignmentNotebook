@@ -8,13 +8,50 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource {
 
+    @IBOutlet weak var myTableView: UITableView!
+    
+    var tasks:[Tasks] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        myTableView.dataSource = self
+        
+        let firstTask = Tasks(subject: "Biology", assignment: "pg. 23-27")
+        let secondTask = Tasks(subject: "Mobile Apps", assignment: "Assignment Notebook App")
+        let thirdTask = Tasks(subject: "HWOC", assignment: "Mockingbird: Chapter 8")
+        tasks = [firstTask, secondTask, thirdTask]
     }
+    
+    
+    @IBAction func whenButtonPressed(_ sender: Any)
+    {
+        
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    
+        return true
+    }
+    
+    
 
-
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tasks.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "myCell") {
+            cell.textLabel?.text = tasks[indexPath.row].subject
+            cell.detailTextLabel?.text = tasks[indexPath.row].assignment
+            return cell
+        } else {
+            return UITableViewCell()
+        }
+    }
 }
 
