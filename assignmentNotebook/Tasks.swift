@@ -16,4 +16,5 @@ class Tasks {
         self.subject = subject
         self.assignment = assignment
     }
+    
 }

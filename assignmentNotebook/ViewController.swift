@@ -15,7 +15,8 @@ class ViewController: UIViewController, UITableViewDataSource {
     var tasks:[Tasks] = []
     
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         myTableView.dataSource = self
         
@@ -33,18 +34,33 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
     
+    //delete
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    {
         return true
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
+    {
+        
+        if editingStyle == .delete {
+           tasks.remove(at: indexPath.row)
+            
+           tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
     
+    //tableView
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         return tasks.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "myCell") {
             cell.textLabel?.text = tasks[indexPath.row].subject
             cell.detailTextLabel?.text = tasks[indexPath.row].assignment
@@ -53,5 +69,11 @@ class ViewController: UIViewController, UITableViewDataSource {
             return UITableViewCell()
         }
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+                
+    }
+    
 }
 
