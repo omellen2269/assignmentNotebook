@@ -12,12 +12,19 @@ class SecondViewController: UIViewController {
 
     @IBOutlet weak var subjectTextField: UITextField!
     @IBOutlet weak var assignmentTextField: UITextField!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let mySubject = subjectTextField.text
+        let myAssignment = assignmentTextField.text
+        
     }
     
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        
+    }
 
 }

@@ -13,7 +13,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var myTableView: UITableView!
     
     var tasks:[Tasks] = []
-    
+    var myTask = Tasks()
     
     override func viewDidLoad()
     {
@@ -71,8 +71,11 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-                
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        let nvc = segue.destination as! SecondViewController
+        
+        
     }
     
 }
