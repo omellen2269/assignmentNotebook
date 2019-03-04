@@ -18,12 +18,20 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let mySubject = subjectTextField.text
-        let myAssignment = assignmentTextField.text
+        
         
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        print(subjectTextField.text)
+        print(assignmentTextField.text)
+        
+        let userDefaults = UserDefaults.standard
+        if let data = subjectTextField.text, let anotherData = assignmentTextField.text {
+            userDefaults.set(data, forKey: "subject")
+            userDefaults.set(anotherData, forKey: "assignment")
+        }
+        
         
     }
 

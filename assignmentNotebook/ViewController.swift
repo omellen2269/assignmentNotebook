@@ -29,10 +29,17 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     @IBAction func whenButtonPressed(_ sender: Any)
     {
-        
     }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        let userDefaults = UserDefaults.standard
+        if let newTaskName = userDefaults.object(forKey: "subject") as? String, let newAssignment = userDefaults.object(forKey: "assignment") as? String {
+            
+            let newTask = Tasks(subject: newTaskName, assignment: newAssignment )
+            tasks.append(newTask)
+            myTableView.reloadData()
+        }
+    }
     
     
     //delete
